@@ -21,8 +21,8 @@ interface Person{
 }
 
 const person:Person ={
-    firstName:"GTR",
-    lastName:"UUU",
+    firstName:"ห๊ะ!!!",
+    lastName:"อะไรนะ",
     age:21,
     single:false,
 }

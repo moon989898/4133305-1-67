@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { NextResponse } from "next/server";
+import { hash } from "bcrypt";
 
 const prisma = new PrismaClient();
 
@@ -9,19 +9,17 @@ export async function GET() {
   return Response.json(allUsers);
 }
 
-
-export async function POST(req){
-    try{    
-    const {email,name} = await req.json()
-    
+export async function POST(req) {
+  try {
+    const { email, name } = await req.json();
     const createUser = await prisma.user.create({
-        data:{
-            email,
-            name,
-        },
+      data: {
+        email,
+        name: hash(name, 10),
+      },
     });
-    return Response.json(createUser,{ status: 200});
-    }catch (err){
-    return Response.json(err,{ status: 500});
+    return Response.json(createUser, { status: 200 });
+  } catch (err) {
+    return Response.json(err, { status: 500 });
   }
 }

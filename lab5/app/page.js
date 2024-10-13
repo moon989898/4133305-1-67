@@ -12,47 +12,47 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await signIn("credentials", { 
-        redirect: false, 
-        email, 
-        password, 
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
       });
 
-      if (result.error) { 
-        console.error(result.error); 
-      } else { 
-        router.push("/profile"); 
+      if (result.error) {
+        console.error(result.error);
+      } else {
+        router.push("/profile");
       }
-  } catch (error) { 
-    console.log("error", error);
-}
-};
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 
-return (
-  <div>
-    <form onsubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-    </div>
+  return (
     <div>
-      <label htmlFor="password">Password</label>
-      <input
-          id="password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
-      <button type="submit">Sign In</button>{" "}
-    </form>
-  </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
   );
 }

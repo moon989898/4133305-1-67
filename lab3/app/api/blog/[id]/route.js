@@ -1,8 +1,8 @@
-export function Get(resquest, { params}) {
-    return Response.json({
-        name: "Niti",
-        major: "IT",
-        lv: "3",
-        id: params.id
-    })
+export function GET(request, { params }) {
+  return Response.json({
+    name: "Drusawin",
+    major: "IT",
+    lv: "3",
+    id: params.id
+  });
 }

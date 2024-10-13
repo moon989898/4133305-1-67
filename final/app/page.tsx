@@ -1,14 +1,16 @@
 import React from "react";
-import Basic from "@/Components/Basic";
-import Hook from "@/Components/Hook";
+import Basic from "@/components/Basic";
+import Hook from "../components/Hook";
+
 const App: React.FC = () => {
   return (
     <>
-      <h1>Welcome To OREO.com</h1>
-      <p>Hello User</p>
+      <h1>Wellcome to IT.BRU</h1>
+      <p>Hello Typcript</p>
 
-      <Basic initVal={1} gender="female" /> {/* Provide the 'gender' prop */}
-      <Hook initHook="1"/>
+      <Basic initVal="1" gender="Male" />
+
+      <Hook initHook={Number(5)} />
     </>
   );
 };

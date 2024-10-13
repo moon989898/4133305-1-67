@@ -1,5 +1,5 @@
 {
-  "name": "lab5",
+  "name": "tmp",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,19 +7,18 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+    
   },
   "dependencies": {
-    "@prisma/client": "^5.16.1",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
     "@auth/prisma-adapter": "^2.4.1",
+    "@prisma/client": "^5.16.1",
     "bcrypt": "^5.1.1",
     "next-auth": "^4.24.7",
-    "postcss": "^8",
-    "prisma": "^5.16.1",
-    "tailwindcss": "^3.4.1"
+    "prisma": "^5.16.1"
   }
 }

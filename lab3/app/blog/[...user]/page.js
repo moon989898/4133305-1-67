@@ -1,21 +1,20 @@
-async function getblong(){
-    const host = "http://127.0.0.1:3000"
-    const data = await fetch(host+"/api/blog/1")
+async function getBlog() {
+  const host = "http://127.0.0.1:3000";
+  const res = await fetch(`${host}/api/blog/1`);
 
-    if(!resizeBy.ok) throw new Error("Can't fecth")
+  if (!res.ok) throw new Error("Can't fecth");
 
-    return resizeBy.json()
+  return res.json();
 }
 
-export default async function Blog({ params }){
+export default async function Blog({ params }) {
+  const data = await getBlog();
 
-    const data = await getblog()
-
-    return (
+  return (
     <div>
-        Blog
-        {params.user}
-        {data.name}{data.major}{data.id}
+      Blog
+      {params.user}
+      {data.name}{data.major}{data.id}
     </div>
-    );
+  );
 }

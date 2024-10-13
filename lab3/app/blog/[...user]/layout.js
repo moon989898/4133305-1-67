@@ -1,8 +1,8 @@
-export default function BlogLayout({Children}){
-    return(
-        <layout>
-        <div>Menu</div>
-        <div>{Children}</div>
-        </layout>
-    );
+export default function BlogLayout({ children }) {
+  return (
+    <layout>
+      <div>Blog Menu</div>
+      <div>{children}</div>
+    </layout>
+  );
 }

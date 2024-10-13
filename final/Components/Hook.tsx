@@ -1,50 +1,54 @@
 "use client";
 
-import { url } from "inspector";
-import { init } from "next/dist/compiled/webpack/webpack";
-import { FC, useEffect, useState } from "react";
+import { FC, useState, useEffect } from "react";
 
-interface Props{
-    initHook:number;
+interface Props {
+  initHook: number;
 }
 
-const Hook:FC <Props>= ({initHook}) => {
-    const [count,setCount] = useState<number>(0);
-    const [data,setData] = useState();
+const Hook: FC<Props> = ({ initHook }) => {
+  const [count, setCount] = useState<number>(initHook);
+  const [data, setData] = useState({});
 
-   
-    useEffect(()=>{
-        setCount(initHook);
+  const inc = (num: number): number => {
+    return num + 1;
+  };
 
-        const url ="http://dataapi.moc.go.th/products?keyword=มะพร้าว"
-        fetch(url)
-        .then((res) => res.json())
-        .then((data)=>{
-            setData(data);
-                console.log(data);
-            
-        });
-    },[count]);
+  const dec = (num: number) => {
+    return num - 1;
+  };
 
-    const inc = (num:number)=>{
-        return num + 1;
-    };
-    const dec = (num:number):number=>{
-        return num - 1;
-    };
+  const getData = async (url: string) => {
+    const res = await fetch(url);
+    const dataRes = await res.json();
 
-    return(
-        <>
-        <p>Hook</p>
-        <div>{count}</div>
-        <button onClick={()=>setCount(inc(count))}>Increase</button>
-        <button onClick={()=>setCount(dec(count))}>Decrease</button>
-        </>
-    );
+    console.log(dataRes);
+    setData(dataRes);
+  };
+
+  useEffect(() => {
+    const url = "https://dataapi.moc.go.th/products?keyword=มะพร้าว";
+
+    // setCount(initHook);
+    try {        
+      getData(url);
+    } catch (err) {
+      console.log("Can't fetch :", err);
+    }
+  }, []);
+
+  return (
+    <>
+      <p>Hook</p>
+      <div>{count}</div>
+      <button onClick={() => setCount(inc(count))}>Increase</button>
+      <button onClick={() => setCount(dec(count))}>Decrease</button>
+    </>
+  );
 };
 
-Hook.defaultProps={
-    initHook: 0,
+Hook.defaultProps = {
+  initHook: 0,
 };
 
 export default Hook;

@@ -1,3 +1,7 @@
 export default function Home(){
-  return <div>Home</div>
+  return (
+    <div>
+      Hello Next.js V14
+    </div>
+  )
 }

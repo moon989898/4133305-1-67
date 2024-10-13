@@ -1,4 +1,4 @@
-import { SessionProvider } from "./components/SessionProvider";
+import SessionProvider from "./components/SessionProvider";
 import { getServerSession } from "next-auth";
 
 export default async function RootLayout({ children }) {
